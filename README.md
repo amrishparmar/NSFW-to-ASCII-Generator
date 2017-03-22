@@ -1,9 +1,9 @@
 # An NSFW to ASCII Art Generator
-An application for turning Pr0nHub images into ASCII art.
+An application for turning Pr0nHub images into ASCII art!
 
 This application was originally created for the [SexTechHack](http://sexhack.tech/) 2016 hackathon. 
 
-Upon the user typing a pr0n category, the user will be given a random still from the Pr0nHub website related to that category.
+Upon the user typing a pr0n category, the user will be given a random still from the Pr0nHub website related to that category but converted to an ASCII art representation.
 
 18+ users only!
 
