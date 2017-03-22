@@ -15,28 +15,26 @@ public class NsfwToAscii {
     private static void start() {
         Menu menu = new Menu();
 
-        menu.printMainMenu(ascii.isNegative());
+        while (true) {
+            menu.printMainMenu(ascii.isNegative());
 
-        int choice = menu.getMenuChoice();
+            int choice = menu.getMenuChoice();
 
-        switch (choice) {
-            case 1:
-                getAnImage(menu.getCategoryFromUser());
-                start();
-                break;
-            case 2:
-                menu.printListOfCategories();
-                if (menu.returnToMenuPrompt()) {
-                    start();
-                }
-                break;
-            case 3:
-                ascii.reverseNegative();
-                System.out.println("\nImage preference updated.");
-                start();
-                break;
-            case 4:
-                System.exit(0);
+            switch (choice) {
+                case 1:
+                    getAnImage(menu.getCategoryFromUser());
+                    break;
+                case 2:
+                    menu.printListOfCategories();
+                    menu.returnToMenuPrompt();
+                    break;
+                case 3:
+                    ascii.reverseNegative();
+                    System.out.println("\nImage preference updated.");
+                    break;
+                case 4:
+                    System.exit(0);
+            }
         }
     }
 
