@@ -9,10 +9,6 @@ public class NsfwToAscii {
 
     public static void main(String[] args) throws IOException {
         ascii = new ASCII(true);
-        start();
-    }
-
-    private static void start() {
         Menu menu = new Menu();
 
         while (true) {
