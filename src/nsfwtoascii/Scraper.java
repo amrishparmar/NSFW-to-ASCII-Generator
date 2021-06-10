@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 class Scraper {
     static String[] getCommonCategoryList(){
@@ -29,16 +30,17 @@ class Scraper {
     }
 
     static String getImageUrlFromCategory(String category) throws IOException {
-        Random random = new Random();
+
 
         try {
             String domain = "http://www.pornhub.com";
 
             // load the results page for the tag
-            Document categoryResultsDoc = Jsoup.connect(domain + "/albums/female-gay-male-shemale-straight?search=" + category).get();
+            Document categoryResultsDoc = Jsoup.connect(domain + "/albums/female-gay-male-misc-straight-transgender-uncategorized?search=" + category).get();
             Elements categoryResults = categoryResultsDoc.getElementsByClass("photoAlbumListContainer");
-            int randomGalleryNumber = random.nextInt(categoryResults.size());
+            int randomGalleryNumber = ThreadLocalRandom.current().nextInt(categoryResults.size());
             Elements randomGallery = categoryResults.get(randomGalleryNumber).getElementsByTag("a");
+
 
             String galleryUrl = randomGallery.get(0).attr("href");
             String gallerySizeText = randomGallery.get(0).getElementsByClass("album-photo-counter").html();
@@ -49,7 +51,7 @@ class Scraper {
 
             Document galleryDoc = Jsoup.connect(galleryUrl).get();
             Elements galleryResults = galleryDoc.getElementsByClass("photoAlbumListContainer");
-            int randomImageNumber = random.nextInt(galleryResults.size());
+            int randomImageNumber = ThreadLocalRandom.current().nextInt(galleryResults.size());
             Elements randomImage = galleryResults.get(randomImageNumber).getElementsByTag("a");
 
             String imgPageUrl = randomImage.get(0).attr("href");
